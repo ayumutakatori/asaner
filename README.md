@@ -22,7 +22,18 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+# initialize
+client = Asana::Client.new('<YOUR_ACCESS_TOKEN>')
+
+# get self account
+client.me
+
+# get target workspace data
+client.workspace('<WORKSPACE_ID>')
+
+...and more
+```
 
 ## Development
 
