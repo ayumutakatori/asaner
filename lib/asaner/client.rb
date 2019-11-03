@@ -1,14 +1,13 @@
 module Asaner
   class Client
-    ACCESS_TOKEN = ENV['ASANA_ACCESS_TOKEN']
     ENDPOINT    = 'https://app.asana.com/'
     API_VERSION = '1.0'
 
-    def initialize
+    def initialize(access_token)
       @client = Faraday.new(url: "#{ENDPOINT}") do |faraday|
         faraday.request :url_encoded
         faraday.adapter Faraday.default_adapter
-        faraday.authorization :Bearer, ACCESS_TOKEN
+        faraday.authorization :Bearer,access_token
       end
     end
 
