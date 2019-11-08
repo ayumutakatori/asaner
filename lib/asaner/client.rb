@@ -49,6 +49,21 @@ module Asaner
       parse(response)
     end
 
+    def project_status(project_status_id)
+      response = @client.get do |request|
+        request.url "api/#{API_VERSION}//project_statuses/#{project_status_id}"
+      end
+      parse(response)
+    end
+
+    def project_statuses_from_project(project_id, option_fields=[])
+      response = @client.get do |request|
+        request.url "api/#{API_VERSION}/projects/#{project_id}/project_statuses"
+        request.params['opt_fields'] = option_fields.join(',')
+      end
+      parse(response)
+    end
+
     def sections_from_project(project_id, option_fields=[])
       response = @client.get do |request|
         request.url "api/#{API_VERSION}/projects/#{project_id}/sections"
